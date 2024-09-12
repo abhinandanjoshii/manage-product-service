@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "RA+34xuppcxVogLWtdqVkv+efnsYPsxYLuJPDvcjjNI=",
+  "Source": "manage-product-service",
+  "BasePath": "_content/manage-product-service",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
