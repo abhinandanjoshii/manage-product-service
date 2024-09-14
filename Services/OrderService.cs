@@ -7,17 +7,16 @@ namespace manage_product_service.Services
     public class OrderService : IOrderService
     {
         private readonly List<Order> _orders = new List<Order>();
-        private readonly IProductService _productService; // Reference to the product service
-        private int _nextOrderId = 1; // Auto-increment OrderId
+        private readonly IProductService _productService; 
+        private int _nextOrderId = 1;
 
         public OrderService(IProductService productService)
         {
-            _productService = productService; // Inject product service to access product prices
+            _productService = productService; 
         }
 
         public Order PlaceOrder(Order order)
         {
-            // Auto-generate the OrderId
             order.OrderId = _nextOrderId++;
 
             // Calculate the total price
@@ -28,17 +27,14 @@ namespace manage_product_service.Services
                 var product = _productService.GetProductById(item.ProductId);
                 if (product == null)
                 {
-                    // If the product is not found, return without placing the order (you can handle this in the controller)
                     return null;
                 }
 
-                // Multiply the product price by the quantity ordered and add to the total price
                 totalPrice += product.Price * item.Quantity;
             }
 
-            // Set the total price of the order
             order.TotalPrice = totalPrice;
-            _orders.Add(order); // Add the order to the in-memory list
+            _orders.Add(order); 
 
             return order;
         }
